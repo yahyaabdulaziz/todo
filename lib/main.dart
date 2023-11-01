@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo/ui/screens/home/home_screen.dart';
+import 'package:todo/ui/screens/splash/splash_screen.dart';
+import 'package:todo/ui/utilites/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,9 +10,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      routes: {
+        SplashScreen.roueName: (_) => SplashScreen(),
+        HomeScreen.roueName: (_) => HomeScreen(),
+      },
+      initialRoute: SplashScreen.roueName,
+    );
   }
 }
