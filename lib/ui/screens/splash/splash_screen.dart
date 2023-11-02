@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/ui/screens/home/home_screen.dart';
-import 'package:todo/ui/utilites/app_assets.dart';
+import 'package:todo/ui/utilities/app_assets.dart';
 
 class SplashScreen extends StatefulWidget {
   static const roueName = "splash";
