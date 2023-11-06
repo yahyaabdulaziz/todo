@@ -14,9 +14,8 @@ abstract class AppTheme {
   static const TextStyle bottomSheetTitleTextStyle =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black);
 
-  static const TextStyle slidableTextStyle =
-  TextStyle(fontWeight: FontWeight.normal, fontSize: 18, color: Colors.white);
-
+  static const TextStyle slidableTextStyle = TextStyle(
+      fontWeight: FontWeight.normal, fontSize: 18, color: Colors.white);
 
   static ThemeData lightTheme = ThemeData(
       primaryColor: AppColors.primary,
@@ -36,6 +35,7 @@ abstract class AppTheme {
         backgroundColor: AppColors.primary,
       ),
       scaffoldBackgroundColor: AppColors.accent,
-      dividerTheme: const DividerThemeData(thickness: 4, color: AppColors.primary));
+      dividerTheme:
+          const DividerThemeData(thickness: 4, color: AppColors.primary));
   static ThemeData darkTheme = ThemeData();
 }

@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: current_selected_tab == 0 ? ListTab() : SettingTab(),
+      body: current_selected_tab == 0 ? ListTab() : const SettingTab(),
       bottomNavigationBar: buildBottomNavi(),
       floatingActionButton: buildFab(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             setState(() {});
           },
           currentIndex: current_selected_tab,
-          items: [
+          items: const [
             BottomNavigationBarItem(icon: Icon(Icons.menu), label: ""),
             BottomNavigationBarItem(icon: Icon(Icons.settings), label: ""),
           ],

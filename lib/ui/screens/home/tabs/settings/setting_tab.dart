@@ -2,9 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:todo/ui/utilities/app_colors.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
 
-class SettingTab extends StatelessWidget {
+class SettingTab extends StatefulWidget {
+  static const List<String> langDropdownValues = [
+    "English",
+    "Arabic",
+  ];
+  static const List<String> modeDropdownValues = [
+    "Dark",
+    "Light",
+  ];
+
   const SettingTab({super.key});
 
+  @override
+  State<SettingTab> createState() => _SettingTabState();
+}
+
+class _SettingTabState extends State<SettingTab> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,14 +34,30 @@ class SettingTab extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          DropdownButton<String>(
-            items: <String>['English', 'Arabic'].map((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-            onChanged: (_) {},
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15.0),
+              border: Border.all(
+                  color: AppColors.primary,
+                  style: BorderStyle.solid,
+                  width: 0.80),
+            ),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton(
+                hint: Text('Enter'),
+                items: SettingTab.langDropdownValues
+                    .map((value) => DropdownMenuItem(
+                          child: Text(value),
+                          value: value,
+                        ))
+                    .toList(),
+                onChanged: (_) {},
+                isExpanded: true,
+                value: 'English',
+              ),
+            ),
           ),
           const SizedBox(
             height: 26,
@@ -39,15 +69,31 @@ class SettingTab extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          DropdownButton<String>(
-            items: <String>['Light', 'Dark'].map((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-            onChanged: (_) {},
-          )
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15.0),
+              border: Border.all(
+                  color: AppColors.primary,
+                  style: BorderStyle.solid,
+                  width: 0.80),
+            ),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton(
+                hint: Text('Enter'),
+                items: SettingTab.modeDropdownValues
+                    .map((value) => DropdownMenuItem(
+                          child: Text(value),
+                          value: value,
+                        ))
+                    .toList(),
+                onChanged: (_) {},
+                isExpanded: true,
+                value: 'Dark',
+              ),
+            ),
+          ),
         ],
       ),
     );
