@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/model/app_user.dart';
 import 'package:todo/model/tododm.dart';
+import 'package:todo/ui/providers/list_provider.dart';
 import 'package:todo/ui/screens/widget/my_text_field.dart';
 import 'package:todo/ui/utilities/app_colors.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
@@ -11,12 +14,16 @@ class AppBotomSheet extends StatefulWidget {
 }
 
 class _AppBotomSheetState extends State<AppBotomSheet> {
+  late ListProvider listProvider;
+
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
+    listProvider = Provider.of(context);
+
     return Container(
       padding: EdgeInsets.all(18),
       height: MediaQuery.of(context).size.height * .5,
@@ -80,19 +87,20 @@ class _AppBotomSheetState extends State<AppBotomSheet> {
     );
   }
 
-  void addTaskToFirestore() {
-    CollectionReference tasksCollectionRef =
-        FirebaseFirestore.instance.collection(TodosModel.collectionName);
+  addTaskToFirestore() async {
+    CollectionReference tasksCollectionRef = AppUser.collection()
+        .doc(AppUser.currentUser!.id)
+        .collection(TodosModel.collectionName);
     DocumentReference documentReference = tasksCollectionRef.doc();
-    documentReference.set({
+    await documentReference.set({
       "id": documentReference.id,
       "title": titleController.text,
       "description": descriptionController.text,
       "date": selectedDate,
       "isDone": false,
-    }).timeout(Duration(milliseconds: 500), onTimeout: () {
-      Navigator.pop(context);
     });
+    listProvider.refereshTodosList();
+    Navigator.pop(context);
   }
 
   void showMyDatePicker() async {
