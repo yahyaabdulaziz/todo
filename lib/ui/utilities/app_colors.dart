@@ -10,4 +10,5 @@ abstract class AppColors {
   static const Color accentDark = Color(0xff1e1e1f);
   static const Color lighBlack = Color(0xff363636);
   static const Color grey = Color(0xffC8C9CB);
+  static const Color selectedColor = Color(0xff61E757);
 }

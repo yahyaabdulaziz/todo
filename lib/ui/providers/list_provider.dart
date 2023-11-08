@@ -51,4 +51,13 @@ class ListProvider extends ChangeNotifier {
     }).toList();
     notifyListeners();
   }
+
+  updateTask(TodosModel upmodel) {
+    CollectionReference collectionReference =
+        AppUser.getCurrentUserTodosCollection();
+    collectionReference.doc(upmodel.id).update(upmodel.toJson()).then((value) {
+      refereshTodosList();
+      notifyListeners();
+    });
+  }
 }

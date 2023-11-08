@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:todo/model/tododm.dart';
 
 class AppUser {
   static const collectionName = "users";
@@ -23,13 +24,19 @@ class AppUser {
     };
   }
 
-  static CollectionReference<AppUser> collection(){
-    return  FirebaseFirestore.instance
+  static CollectionReference<AppUser> collection() {
+    return FirebaseFirestore.instance
         .collection(AppUser.collectionName)
         .withConverter<AppUser>(fromFirestore: (snapshot, _) {
       return AppUser.fromJson(snapshot.data()!);
     }, toFirestore: (user, _) {
       return user.toJson();
     });
+  }
+
+  static CollectionReference getCurrentUserTodosCollection() {
+    return AppUser.collection()
+        .doc(AppUser.currentUser!.id)
+        .collection(TodosModel.collectionName);
   }
 }

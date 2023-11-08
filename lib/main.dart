@@ -9,6 +9,8 @@ import 'package:todo/ui/screens/splash/splash_screen.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'ui/screens/edit/edit_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.roueName: (_) => HomeScreen(),
         LoginScreen.routeName: (_) => LoginScreen(),
         RegisterScreen.routeName: (_) => RegisterScreen(),
+        EditScreen.routeName: (_) => EditScreen(),
       },
       initialRoute: LoginScreen.routeName,
     );

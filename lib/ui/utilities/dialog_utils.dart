@@ -41,22 +41,20 @@ void showErrorMessage(BuildContext context, String message) {
       });
 }
 
-void showWelcomeLoading(BuildContext context,String name) {
+void showWelcomeLoading(BuildContext context, String name) {
   showDialog(
       context: context,
       barrierDismissible: false,
       builder: (_) {
         return AlertDialog(
-          content:
-              Text(" Welcome $name In ToDo Application"),
-              actions: [
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text("OK"))
-              ],
-          );
-
+          content: Text(" Welcome $name In ToDo Application"),
+          actions: [
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("OK"))
+          ],
+        );
       });
 }
