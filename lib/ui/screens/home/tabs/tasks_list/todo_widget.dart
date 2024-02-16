@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/model/app_user.dart';
 import 'package:todo/model/tododm.dart';
@@ -7,7 +8,6 @@ import 'package:todo/ui/providers/list_provider.dart';
 import 'package:todo/ui/screens/edit/edit_screen.dart';
 import 'package:todo/ui/utilities/app_colors.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 class TodoWidget extends StatelessWidget {
   final TodosModel todosmodel;
@@ -25,7 +25,7 @@ class TodoWidget extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: AppColors.grey,
           borderRadius: BorderRadius.circular(24),
         ),
         margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),

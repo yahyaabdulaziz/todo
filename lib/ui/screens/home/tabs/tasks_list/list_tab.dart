@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/ui/providers/list_provider.dart';
 import 'package:todo/ui/screens/home/tabs/tasks_list/todo_widget.dart';
-import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:todo/ui/utilities/app_colors.dart';
-import '../../../../../model/tododm.dart';
 
 class ListTab extends StatefulWidget {
   @override
@@ -66,11 +64,14 @@ class _ListTabState extends State<ListTab> {
           ),
         ),
         Expanded(
-          child: ListView.builder(
-              itemCount: listProvider.todos.length,
-              itemBuilder: (context, index) => TodoWidget(
-                    todosmodel: listProvider.todos[index],
-                  )),
+          child: Container(
+            color: Colors.white,
+            child: ListView.builder(
+                itemCount: listProvider.todos.length,
+                itemBuilder: (context, index) => TodoWidget(
+                      todosmodel: listProvider.todos[index],
+                    )),
+          ),
         ),
       ],
     );

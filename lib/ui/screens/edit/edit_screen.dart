@@ -6,8 +6,6 @@ import 'package:todo/ui/screens/home/home_screen.dart';
 import 'package:todo/ui/utilities/app_colors.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
 
-import '../widget/my_text_field.dart';
-
 class EditScreen extends StatefulWidget {
   static const String routeName = "editTaskScreen";
 
@@ -31,7 +29,7 @@ class _EditScreenState extends State<EditScreen> {
           Column(
             children: [
               AppBar(
-                flexibleSpace: SizedBox(height: 180),
+                flexibleSpace: const SizedBox(height: 180),
                 backgroundColor: AppColors.primary,
                 toolbarHeight: MediaQuery.of(context).size.height * .12,
                 title: Text(
@@ -42,8 +40,8 @@ class _EditScreenState extends State<EditScreen> {
             ],
           ),
           Container(
-              margin: EdgeInsets.only(top: 120, left: 14, right: 14),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              margin: const EdgeInsets.only(top: 120, left: 14, right: 14),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: Colors.white,
@@ -66,7 +64,8 @@ class _EditScreenState extends State<EditScreen> {
                     ),
                     TextFormField(
                       initialValue: model.title,
-                      decoration: InputDecoration(hintText: "Enter title "),
+                      decoration:
+                          const InputDecoration(hintText: "Enter title "),
                       onChanged: (value) {
                         model.title = value;
                       },
@@ -80,13 +79,13 @@ class _EditScreenState extends State<EditScreen> {
                         model.description = value;
                       },
                       decoration:
-                          InputDecoration(hintText: "Enter description "),
+                          const InputDecoration(hintText: "Enter description "),
                     ),
                     const SizedBox(
                       height: 24,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 12),
+                      margin: const EdgeInsets.only(left: 12),
                       child: Text(
                         "Select date",
                         textAlign: TextAlign.start,
@@ -112,10 +111,10 @@ class _EditScreenState extends State<EditScreen> {
                       height: 50,
                     ),
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 8, horizontal: 14),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 12),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 14),
                       child: ElevatedButton(
                           onPressed: () {
                             listprovider.updateTask(model);
@@ -145,7 +144,7 @@ class _EditScreenState extends State<EditScreen> {
             context: context,
             initialDate: todosModel.date,
             firstDate: todosModel.date,
-            lastDate: DateTime.now().add(Duration(days: 365))) ??
+            lastDate: DateTime.now().add(const Duration(days: 365))) ??
         todosModel.date;
     setState(() {});
   }

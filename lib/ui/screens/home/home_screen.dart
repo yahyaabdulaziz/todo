@@ -4,7 +4,6 @@ import 'package:todo/model/app_user.dart';
 import 'package:todo/ui/bottom_sheets/app_bottom_sheet.dart';
 import 'package:todo/ui/providers/list_provider.dart';
 import 'package:todo/ui/screens/auth/login/login_screen.dart';
-import 'package:todo/ui/screens/home/tabs/settings/setting_tab.dart';
 import 'package:todo/ui/screens/home/tabs/tasks_list/list_tab.dart';
 import 'package:todo/ui/utilities/app_colors.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
@@ -27,10 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
     provider = Provider.of(context);
     return Scaffold(
       appBar: buildAppBar(),
-      body: current_selected_tab == 0 ? ListTab() : const SettingTab(),
-      bottomNavigationBar: buildBottomNavi(),
+      body: ListTab(),
+      //bottomNavigationBar: buildBottomNavi(),
       floatingActionButton: buildFab(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
@@ -41,16 +40,18 @@ class _HomeScreenState extends State<HomeScreen> {
               context: context,
               builder: (_) => Padding(
                     padding: MediaQuery.of(context).viewInsets,
-                    child: AppBotomSheet(),
+                    child: AppBottomSheet(),
                   ));
         },
         child: const Icon(
           Icons.add,
+          size: 40,
         ),
       );
 
   PreferredSizeWidget buildAppBar() => AppBar(
         backgroundColor: AppColors.primary,
+        automaticallyImplyLeading: false,
         toolbarHeight: MediaQuery.of(context).size.height * .12,
         actions: [
           InkWell(
@@ -59,10 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 provider.todos.clear();
                 Navigator.pushReplacementNamed(context, LoginScreen.routeName);
               },
-              child: Icon(Icons.logout)),
+              child: Container(
+                  margin: EdgeInsets.only(right: 12),
+                  child: Icon(Icons.logout,color: Colors.white,))),
         ],
         title: const Text(
-          "To Do",
+          "ToDo Master",
           style: AppTheme.appBarTextStyle,
         ),
       );
@@ -73,14 +76,25 @@ class _HomeScreenState extends State<HomeScreen> {
         clipBehavior: Clip.hardEdge,
         height: 95,
         child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
           onTap: (index) {
             current_selected_tab = index;
             setState(() {});
           },
           currentIndex: current_selected_tab,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.menu), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: ""),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
+                label: "Menu"),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.black,
+                ),
+                label: "Settings"),
           ],
         ),
       );

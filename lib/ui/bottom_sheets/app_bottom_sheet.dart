@@ -8,12 +8,14 @@ import 'package:todo/ui/screens/widget/my_text_field.dart';
 import 'package:todo/ui/utilities/app_colors.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
 
-class AppBotomSheet extends StatefulWidget {
+class AppBottomSheet extends StatefulWidget {
+  const AppBottomSheet({super.key});
+
   @override
-  State<AppBotomSheet> createState() => _AppBotomSheetState();
+  State<AppBottomSheet> createState() => _AppBottomSheetState();
 }
 
-class _AppBotomSheetState extends State<AppBotomSheet> {
+class _AppBottomSheetState extends State<AppBottomSheet> {
   late ListProvider listProvider;
 
   TextEditingController titleController = TextEditingController();
@@ -25,7 +27,8 @@ class _AppBotomSheetState extends State<AppBotomSheet> {
     listProvider = Provider.of(context);
 
     return Container(
-      padding: EdgeInsets.all(18),
+      color: AppColors.grey,
+      padding: const EdgeInsets.all(18),
       height: MediaQuery.of(context).size.height * .5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -72,7 +75,7 @@ class _AppBotomSheetState extends State<AppBotomSheet> {
           const Spacer(),
           ElevatedButton(
               onPressed: () {
-                addTaskToFirestore();
+                addTaskToFirestore(context);
               },
               style: ButtonStyle(
                 backgroundColor:
@@ -87,7 +90,7 @@ class _AppBotomSheetState extends State<AppBotomSheet> {
     );
   }
 
-  addTaskToFirestore() async {
+  addTaskToFirestore(BuildContext context) async {
     CollectionReference tasksCollectionRef = AppUser.collection()
         .doc(AppUser.currentUser!.id)
         .collection(TodosModel.collectionName);
@@ -109,7 +112,7 @@ class _AppBotomSheetState extends State<AppBotomSheet> {
             context: context,
             initialDate: selectedDate,
             firstDate: DateTime.now(),
-            lastDate: DateTime.now().add(Duration(days: 365))) ??
+            lastDate: DateTime.now().add(const Duration(days: 365))) ??
         selectedDate;
     setState(() {});
   }

@@ -30,16 +30,8 @@ class ListProvider extends ChangeNotifier {
     todos = docs.map((docSnapshot) {
       return docSnapshot.data();
     }).toList();
-    // for (int i = 0; i < todos.length; i++) {
-    //   if (todos[i].date.day != selectedDay.day ||
-    //       todos[i].date.month != selectedDay.month ||
-    //       todos[i].date.year != selectedDay.year) {
-    //     todos.removeAt(i);
-    //     i--;
-    //   }
-    // }
 
-    ///Better Soulation
+    ///Better Solution
     todos = todos.where((todo) {
       if (todo.date.day != selectedDay.day ||
           todo.date.month != selectedDay.month ||

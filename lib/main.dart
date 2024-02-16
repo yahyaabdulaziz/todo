@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/ui/providers/list_provider.dart';
@@ -7,7 +8,6 @@ import 'package:todo/ui/screens/auth/register/register_screen.dart';
 import 'package:todo/ui/screens/home/home_screen.dart';
 import 'package:todo/ui/screens/splash/splash_screen.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'ui/screens/edit/edit_screen.dart';
 
@@ -15,7 +15,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseFirestore.instance.settings =
-      Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
+      const Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
 
   /// to enable network with firestore
   //await FirebaseFirestore.instance.disableNetwork();
@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       routes: {
         SplashScreen.routeName: (_) => SplashScreen(),

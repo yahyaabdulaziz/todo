@@ -23,23 +23,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: buildAppBar(), body: buildMyBody());
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: buildMyBody());
   }
-
-  PreferredSizeWidget buildAppBar() => AppBar(
-        backgroundColor: AppColors.primary,
-        toolbarHeight: MediaQuery.of(context).size.height * .12,
-        title: const Text(
-          "To Do",
-          style: AppTheme.appBarTextStyle,
-        ),
-      );
 
   Widget buildMyBody() {
     return Padding(
         padding: const EdgeInsets.all(10),
         child: ListView(
-          children: <Widget>[
+          children: [
+            Image(image: AssetImage("assets/images/todo_icon.png"),
+            height: MediaQuery.of(context).size.height*.25,),
+            SizedBox(
+              height: 22,
+            ),
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
