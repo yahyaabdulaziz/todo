@@ -1,16 +1,29 @@
-# todo
+# ToDo App
 
-"Notes Application"
+A simple to-do list app built with Flutter.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Add, edit, and delete tasks
+- Mark tasks as complete.
+- View tasks by category or priority
+- Persistent storage using Firebase.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Packages
+- provider.
+- cupertino_icons.
+- flutter_slidable.
+- calendar_timeline.
+- firebase_core.
+- cloud_firestore.
+- firebase_auth.
+- flutter_launcher_icons.
+- flutter_local_notifications.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+1. Clone the repository:
+
+   **path**
+   git clone https://github.com/yahyaabdulaziz/todo.git

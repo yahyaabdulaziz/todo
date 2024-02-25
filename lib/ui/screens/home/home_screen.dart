@@ -62,7 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Container(
                   margin: EdgeInsets.only(right: 12),
-                  child: Icon(Icons.logout,color: Colors.white,))),
+                  child: Icon(
+                    Icons.logout,
+                    color: Colors.white,
+                  ))),
         ],
         title: const Text(
           "ToDo Master",

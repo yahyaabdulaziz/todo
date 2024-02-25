@@ -23,9 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: buildMyBody());
+    return Scaffold(backgroundColor: Colors.white, body: buildMyBody());
   }
 
   Widget buildMyBody() {
@@ -33,8 +31,10 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
-            Image(image: AssetImage("assets/images/todo_icon.png"),
-            height: MediaQuery.of(context).size.height*.25,),
+            Image(
+              image: AssetImage("assets/images/todo_icon.png"),
+              height: MediaQuery.of(context).size.height * .25,
+            ),
             SizedBox(
               height: 22,
             ),

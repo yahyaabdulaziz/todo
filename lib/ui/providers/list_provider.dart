@@ -7,7 +7,7 @@ class ListProvider extends ChangeNotifier {
   List<TodosModel> todos = [];
   DateTime selectedDay = DateTime.now();
 
-  refereshTodosList() async {
+  refreshTodosList() async {
     CollectionReference<TodosModel> todosCollection = AppUser.collection()
         .doc(AppUser.currentUser!.id)
         .collection(TodosModel.collectionName)
@@ -44,11 +44,11 @@ class ListProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  updateTask(TodosModel upmodel) {
+  updateTask(TodosModel upModel) {
     CollectionReference collectionReference =
         AppUser.getCurrentUserTodosCollection();
-    collectionReference.doc(upmodel.id).update(upmodel.toJson()).then((value) {
-      refereshTodosList();
+    collectionReference.doc(upModel.id).update(upModel.toJson()).then((value) {
+      refreshTodosList();
       notifyListeners();
     });
   }

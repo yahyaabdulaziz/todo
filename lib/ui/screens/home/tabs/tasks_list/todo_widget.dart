@@ -10,10 +10,10 @@ import 'package:todo/ui/utilities/app_colors.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
 
 class TodoWidget extends StatelessWidget {
-  final TodosModel todosmodel;
+  final TodosModel todosModel;
   late ListProvider provider;
 
-  TodoWidget({super.key, required this.todosmodel});
+  TodoWidget({super.key, required this.todosModel});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TodoWidget extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, EditScreen.routeName,
-            arguments: todosmodel);
+            arguments: todosModel);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -36,8 +36,8 @@ class TodoWidget extends StatelessWidget {
               onPressed: (_) {
                 CollectionReference collectionReference =
                     AppUser.getCurrentUserTodosCollection();
-                collectionReference.doc(todosmodel.id).delete().then((value) {
-                  provider.refereshTodosList();
+                collectionReference.doc(todosModel.id).delete().then((value) {
+                  provider.refreshTodosList();
                 });
               },
               backgroundColor: Colors.red,
@@ -53,7 +53,7 @@ class TodoWidget extends StatelessWidget {
               children: [
                 VerticalDivider(
                   thickness: 4,
-                  color: todosmodel.isDone
+                  color: todosModel.isDone
                       ? AppColors.selectedColor
                       : AppColors.primary,
                 ),
@@ -65,18 +65,18 @@ class TodoWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(todosmodel.title,
-                          style: todosmodel.isDone
+                      Text(todosModel.title,
+                          style: todosModel.isDone
                               ? AppTheme.doneTitleTextStyle
                               : AppTheme.textTitleTextStyle),
-                      Text(todosmodel.description,
-                          style: todosmodel.isDone
+                      Text(todosModel.description,
+                          style: todosModel.isDone
                               ? AppTheme.doneDescriptionTextStyle
                               : AppTheme.taskDescriptionTextStyle)
                     ],
                   ),
                 ),
-                todosmodel.isDone
+                todosModel.isDone
                     ? Text(
                         "Done!",
                         style: TextStyle(
@@ -86,8 +86,8 @@ class TodoWidget extends StatelessWidget {
                       )
                     : InkWell(
                         onTap: () {
-                          todosmodel.isDone = true;
-                          provider.updateTask(todosmodel);
+                          todosModel.isDone = true;
+                          provider.updateTask(todosModel);
                         },
                         child: Container(
                             padding: const EdgeInsets.symmetric(

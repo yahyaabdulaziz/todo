@@ -17,7 +17,7 @@ class _ListTabState extends State<ListTab> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      listProvider.refereshTodosList();
+      listProvider.refreshTodosList();
     });
   }
 
@@ -50,7 +50,7 @@ class _ListTabState extends State<ListTab> {
                 lastDate: DateTime.now().add(Duration(days: 365)),
                 onDateSelected: (date) {
                   listProvider.selectedDay = date;
-                  listProvider.refereshTodosList();
+                  listProvider.refreshTodosList();
                 },
                 leftMargin: 20,
                 dayNameColor: Colors.black,
@@ -69,7 +69,7 @@ class _ListTabState extends State<ListTab> {
             child: ListView.builder(
                 itemCount: listProvider.todos.length,
                 itemBuilder: (context, index) => TodoWidget(
-                      todosmodel: listProvider.todos[index],
+                      todosModel: listProvider.todos[index],
                     )),
           ),
         ),

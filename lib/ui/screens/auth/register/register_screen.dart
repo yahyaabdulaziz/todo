@@ -22,8 +22,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +35,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
-            Image(image: AssetImage("assets/images/todo_icon.png"),
-              height: MediaQuery.of(context).size.height*.25,),
+            Image(
+              image: AssetImage("assets/images/todo_icon.png"),
+              height: MediaQuery.of(context).size.height * .25,
+            ),
             const SizedBox(
               height: 22,
             ),

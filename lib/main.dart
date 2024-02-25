@@ -6,6 +6,7 @@ import 'package:todo/ui/providers/list_provider.dart';
 import 'package:todo/ui/screens/auth/login/login_screen.dart';
 import 'package:todo/ui/screens/auth/register/register_screen.dart';
 import 'package:todo/ui/screens/home/home_screen.dart';
+import 'package:todo/ui/screens/notification/notifi_service.dart';
 import 'package:todo/ui/screens/splash/splash_screen.dart';
 import 'package:todo/ui/utilities/app_theme.dart';
 
@@ -16,6 +17,7 @@ void main() async {
   await Firebase.initializeApp();
   FirebaseFirestore.instance.settings =
       const Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
+  NotificationService().initNotification();
 
   /// to enable network with firestore
   //await FirebaseFirestore.instance.disableNetwork();
