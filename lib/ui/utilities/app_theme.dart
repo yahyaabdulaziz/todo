@@ -6,11 +6,11 @@ abstract class AppTheme {
       fontWeight: FontWeight.bold, fontSize: 22, color: AppColors.white);
 
   static const TextStyle textTitleTextStyle = TextStyle(
-      fontWeight: FontWeight.bold, fontSize: 22, color: AppColors.primary);
+      fontWeight: FontWeight.bold, fontSize: 20, color: AppColors.primary);
 
   static const TextStyle doneTitleTextStyle = TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 22,
+      fontSize: 20,
       color: AppColors.selectedColor);
 
   static const TextStyle taskDescriptionTextStyle = TextStyle(
@@ -48,5 +48,4 @@ abstract class AppTheme {
     dividerTheme:
         const DividerThemeData(thickness: 4, color: AppColors.primary),
   );
-  static ThemeData darkTheme = ThemeData();
 }

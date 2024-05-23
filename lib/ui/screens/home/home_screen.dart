@@ -43,9 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: AppBottomSheet(),
                   ));
         },
-        child: const Icon(
+        child: Icon(
           Icons.add,
-          size: 40,
+          size: MediaQuery.of(context).size.height * .05,
         ),
       );
 
@@ -70,35 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text(
           "ToDo Master",
           style: AppTheme.appBarTextStyle,
-        ),
-      );
-
-  Widget buildBottomNavi() => BottomAppBar(
-        notchMargin: 8,
-        shape: const CircularNotchedRectangle(),
-        clipBehavior: Clip.hardEdge,
-        height: 95,
-        child: BottomNavigationBar(
-          backgroundColor: Colors.transparent,
-          onTap: (index) {
-            current_selected_tab = index;
-            setState(() {});
-          },
-          currentIndex: current_selected_tab,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                ),
-                label: "Menu"),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.settings,
-                  color: Colors.black,
-                ),
-                label: "Settings"),
-          ],
         ),
       );
 }

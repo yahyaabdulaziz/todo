@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:947139385047:android:5e59faee2694699fc80292",
+        "mobilesdk_app_id": "1:947139385047:android:2e54600e27bb9956c80292",
         "android_client_info": {
-          "package_name": "com.example.todo"
+          "package_name": "com.train.todo"
         }
       },
       "oauth_client": [],

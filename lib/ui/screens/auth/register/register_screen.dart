@@ -52,8 +52,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       fontWeight: FontWeight.w500,
                       fontSize: 30),
                 )),
-            const SizedBox(
-              height: 18,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .03,
             ),
             Container(
               padding: const EdgeInsets.all(10),
@@ -86,11 +86,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 15,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .08,
             ),
             Container(
-                height: 50,
+                height: MediaQuery.of(context).size.height * .07,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ElevatedButton(
                   style: ButtonStyle(

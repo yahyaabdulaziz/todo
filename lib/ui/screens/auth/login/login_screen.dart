@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: MediaQuery.of(context).size.height * .25,
             ),
             SizedBox(
-              height: 22,
+              height: MediaQuery.of(context).size.height * .03,
             ),
             Container(
                 alignment: Alignment.center,
@@ -48,8 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.w500,
                       fontSize: 30),
                 )),
-            const SizedBox(
-              height: 18,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .03,
             ),
             Container(
               padding: const EdgeInsets.all(10),
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Container(
-                height: 50,
+                height: MediaQuery.of(context).size.height * .08,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ElevatedButton(
                   style: ButtonStyle(
@@ -122,9 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
               email: emailController.text, password: passwordController.text);
 
       /// to storing more data storing it in firestore
-      AppUser currentuser =
+      AppUser currentUser =
           await getUserFromFirestore(userCredential.user!.uid);
-      AppUser.currentUser = currentuser;
+      AppUser.currentUser = currentUser;
       hideLoading(context);
       showWelcomeLoading(context, AppUser.currentUser!.username);
       Navigator.pushReplacementNamed(context, HomeScreen.roueName);
@@ -136,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<AppUser> getUserFromFirestore(String id) async {
-    CollectionReference<AppUser> usercollection = FirebaseFirestore.instance
+    CollectionReference<AppUser> userCollection = FirebaseFirestore.instance
         .collection(AppUser.collectionName)
         .withConverter<AppUser>(fromFirestore: (snapshot, _) {
       return AppUser.fromJson(snapshot.data()!);
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return user.toJson();
     });
     DocumentSnapshot<AppUser> documentSnapshot =
-        await usercollection.doc(id).get();
+        await userCollection.doc(id).get();
     return documentSnapshot.data()!;
   }
 }
